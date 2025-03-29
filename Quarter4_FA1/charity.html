@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Vision Philippines - Sign-Up</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; padding: 20px; }
+        form { max-width: 400px; margin: auto; }
+        label, input, select { display: block; margin-bottom: 5px; }
+        .error { color: red; display: none; font-size: 0.9em; margin-bottom: 10px; }
+        .radio-group { display: flex; gap: 10px; align-items: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Support World Vision Philippines</h1>
+    </header>
+    <p>Join us in making a difference! Here’s why we support World Vision Philippines:
+        <ol>
+            <li>Empowering children through education and livelihood programs.</li>
+            <li>Providing emergency relief and long-term community development.</li>
+            <li>Advocating for child protection and sustainable change.</li>
+        </ol>
+    </p>
+    <form id="signupForm">
+        <label for="firstName">First Name (required):</label>
+        <input type="text" id="firstName">
+        <p class="error" id="errorFirstName">First name is required.</p>
+
+        <label for="lastName">Last Name (required):</label>
+        <input type="text" id="lastName">
+        <p class="error" id="errorLastName">Last name is required.</p>
+
+        <label>Sex (required):</label>
+        <div class="radio-group">
+            <input type="radio" name="sex" value="Male"> <label>Male</label>
+            <input type="radio" name="sex" value="Female"> <label>Female</label>
+            <input type="radio" name="sex" value="Prefer not to say"> <label>Prefer not to say</label>
+        </div>
+        <p class="error" id="errorSex">Please select a gender.</p>
+
+        <label for="email">Email Address (required):</label>
+        <input type="email" id="email">
+        <p class="error" id="errorEmail">Email address is required.</p>
+
+        <label for="contact">Contact Number (optional):</label>
+        <input type="text" id="contact">
+
+        <button type="button" onclick="validateForm()">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            let firstName = document.getElementById("firstName").value;
+            let lastName = document.getElementById("lastName").value;
+            let email = document.getElementById("email").value;
+            let sexSelected = document.querySelector('input[name="sex"]:checked');
+
+            document.getElementById("errorFirstName").style.display = firstName ? "none" : "block";
+            document.getElementById("errorLastName").style.display = lastName ? "none" : "block";
+            document.getElementById("errorEmail").style.display = email ? "none" : "block";
+            document.getElementById("errorSex").style.display = sexSelected ? "none" : "block";
+
+            if (firstName && lastName && email && sexSelected) {
+                alert("Thank you for supporting World Vision Philippines!");
+                document.getElementById("signupForm").reset();
+            }
+        }
+    </script>
+</body>
